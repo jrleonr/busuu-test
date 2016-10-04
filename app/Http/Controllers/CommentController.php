@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /**
- * 
+ * Comment controller
  */
 class CommentController extends Controller
 {
@@ -43,12 +43,13 @@ class CommentController extends Controller
 
         return response()->json([
             'rating' => $rating->rate,
+            'score' => $comment->score,
             'code' => '200'
         ]);
     }
 
     /**
-     *  Get total score from a commet
+     * Get total score from a commet
      * @param  int $id Id for the comment
      * @return int     Total score for one comment
      */
