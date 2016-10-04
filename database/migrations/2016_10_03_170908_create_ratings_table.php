@@ -16,7 +16,7 @@ class CreateRatingsTable extends Migration
         Schema::create('rating', function(Blueprint $table){
             $table->increments('id');
             $table->boolean('rate')->comment('False for thumb down and true for thumb up');   
-                
+
             $table->unsignedInteger('user_id');   
             $table->unsignedInteger('comment_id');   
 
@@ -34,6 +34,6 @@ class CreateRatingsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('rating');
     }
 }

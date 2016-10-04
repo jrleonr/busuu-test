@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentsTable extends Migration
+class AddScoreToCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function(Blueprint $table){
-            $table->increments('id');
-            $table->text('text');
-            $table->unsignedInteger('user_id');   
-            $table->timestamps();   
+        Schema::table('comments', function (Blueprint $table) {
+            $table->integer('score');   
         });
     }
 
@@ -28,6 +25,8 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('comments');
+        Schema::table('comments', function (Blueprint $table) {
+            $table->dropColumn('score');
+        });
     }
 }
